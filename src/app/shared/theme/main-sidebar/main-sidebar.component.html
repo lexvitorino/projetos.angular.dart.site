@@ -1,0 +1,42 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a routerLink="/" class="brand-link">
+    <img src="assets/admlte/img/log_mht.jpg" alt="{{ siteTitle }}" class="brand-image img-circle elevation-3"
+      style="opacity: .8">
+    <span class="brand-text font-weight-light">{{ siteTitle }}</span>
+  </a>
+
+  <div class="sidebar">
+
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img src="{{ this.login.avatar }}" class="img-circle" alt="User Image">
+      </div>
+      <div class="info">
+        <span class="d-block">{{ this.login.nome }}</span>
+      </div>
+    </div>
+
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item has-treeview" *ngFor="let menu of menusInitial">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fa {{ menu.icon }}"></i>
+            <p>
+              {{ menu.title }}
+              <i class="right fa fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item" *ngFor="let item of menu.menuFilho">
+              <a routerLink="{{item.link}}" routerLinkActive="active" class="nav-link">
+                <i class="fa fa-circle-o nav-icon"></i>
+                <p>{{ item.title }}</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>

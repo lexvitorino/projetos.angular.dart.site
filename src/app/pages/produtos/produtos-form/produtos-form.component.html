@@ -1,0 +1,103 @@
+<div class="container-fluid">
+  <div class="row mb-2">
+    <div class="col-sm-6">
+      <h4 class="m-0 text-dark">Cadastro de Produtos</h4>
+    </div><!-- /.col -->
+    <div class="col-sm-6">
+      <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a routerLink="/" routerLinkActive="active"><i class="fa fa-dashboard"></i> Home</a>
+        </li>
+        <li class="breadcrumb-item active">Produtos</li>
+      </ol>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+</div>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <a class="btn btn-primary" routerLink="/pages/fornecedores" title="Voltar"><i
+                class="fa fa-rotate-left"></i></a>
+          </div>
+          <div class="card-body">
+            <form class="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+              <div class="alert alert-warning alert-dismissible alert-validations"
+                *ngIf="validacoes && validacoes.length > 0">
+                <button type="button" class="close" (click)="validacoes = []" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-warning"></i> Verifique os erros abaixo!</h4>
+                <ul>
+                  <li *ngFor="let validacao of validacoes">{{validacao}}</li>
+                </ul>
+              </div>
+              <div class="box-body">
+                <div class="nav-tabs-custom">
+                  <ul class="nav nav-tabs mb-2">
+                    <li class="active"><a href="#tab_dad" data-toggle="tab" aria-expanded="true">Dados</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="tab_dad">
+                      <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                          <div class="form-group form-group-sm">
+                            <label for="id">ID</label>
+                            <input id="id" name="id" [(ngModel)]="data.id" disabled class="form-control form-control-sm"
+                              type="text">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                          <div class="form-group form-group-sm">
+                            <label for="descricao" class="required">Descrição</label>
+                            <input id="descricao" name="descricao" [(ngModel)]="data.descricao" maxlength="100" required
+                              class="form-control form-control-sm" type="text" autofocus>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                          <div class="form-group form-group-sm">
+                            <label for="tipo" class="required">Tipo</label>
+                            <select id="tipo" name="tipo" [(ngModel)]="data.tipo" required
+                              class="form-control form-control-sm" type="text">
+                              <option *ngFor="let t of tiposProduto.get" value="{{t.id}}">{{ t.descricao }}</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                          <div class="form-group form-group-sm">
+                            <label for="valor">Valor</label>
+                            <input id="valor" name="valor" [(ngModel)]="data.valor" maxlength="30"
+                              class="form-control form-control-sm" type="text" currencyMask
+                              [options]="{ prefix: '', thousands: '.', decimal: ',' }">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="box-footer">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <button class="btn btn-success mr-1" type="submit">
+                        Salvar
+                      </button>
+                      <button class="btn btn-success" (click)="onSaveAndCreate(f)" type="button">
+                        Salvar e Novo
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
