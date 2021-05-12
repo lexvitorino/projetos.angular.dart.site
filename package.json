@@ -29,7 +29,7 @@
     "bootstrap-daterangepicker": "^3.0.5",
     "bootstrap-slider": "^10.6.2",
     "bootstrap-timepicker": "^0.5.2",
-    "chart.js": "^2.7.2",
+    "chart.js": "^2.9.4",
     "core-js": "^2.5.4",
     "datatables.net": "^1.10.16",
     "datatables.net-autofill-bs4": "^2.3.3",
